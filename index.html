@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>المشاغب اليمني — تعلم الهكر الأخلاقي</title>
+
+  <!-- سياسة أمان محتوى بسيطة (تقيّد بعض المصادر) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https:;">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-badge">م</div>
+      <div>
+        <h1>المشاغب اليمني</h1>
+        <p class="tag">تعلم الهكر الأخلاقي بطريقة آمنة وقانونية</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="#hero">الرئيسية</a>
+      <a href="#courses">الدورات</a>
+      <a href="#labs">المختبرات</a>
+      <a href="#snippets">أمثلة آمنة</a>
+      <a href="#quiz">اختبار سريع</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <h2>تعلم الهكر الأخلاقي بشكل آمن واحترافي</h2>
+      <p>محتوى مخصّص للمبتدئين والمحترفين يركّز على الجوانب الدفاعية، تحليل الثغرات بأمان، والامتثال القانوني.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#courses">ابدأ الآن</a>
+        <a class="btn outline" href="#labs">المختبرات القانونية</a>
+      </div>
+    </div>
+    <div class="hero-decor">
+      <!-- animated shapes -->
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" class="section">
+    <h3 class="section-title">الدورات</h3>
+    <div class="cards">
+      <article class="card">
+        <h4>مقدمة إلى أمن المعلومات</h4>
+        <p>المفاهيم الأساسية: مفاهيم السرية، السلامة، التوافر، ونماذج التهديد.</p>
+      </article>
+      <article class="card">
+        <h4>الشبكات وآمنها</h4>
+        <p>مفاهيم الشبكات، تحليل حزم (نظري)، وبروتوكولات آمنة.</p>
+      </article>
+      <article class="card">
+        <h4>تأمين الويب (OWASP)</h4>
+        <p>مقدمة عملية ونظرية لمخاطر تطبيقات الويب وكيفية الحماية منها.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- LABS -->
+  <section id="labs" class="section alt">
+    <h3 class="section-title">المختبرات القانونية</h3>
+    <p class="lead">تدريبات داخل بيئة محلية أو منصات معروفة — لا تقم بتجربة أي هجوم على أنظمة ليس لديك إذنها.</p>
+
+    <div class="lab-grid">
+      <div class="lab">
+        <h4>مختبر التعلم الآمن</h4>
+        <p>كيفية إنشاء بيئة افتراضية (VM) واستخدامها لتجارب آمنة — أدوات مقترحة: VirtualBox, Vagrant.</p>
+      </div>
+      <div class="lab">
+        <h4>منصات تدريب شرعية</h4>
+        <p>تعرّف إلى منصات مثل TryHackMe و HackTheBox لتطبيق مهاراتك ضمن قواعد قانونية.</p>
+      </div>
+      <div class="lab">
+        <h4>تحليل الشيفرة والبحث عن ثغرات</h4>
+        <p>مناهج لتحليل الكود بنّاءً: مراجعات كود آمنة، واختبارات وحدات لتقليل الأخطاء.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SNIPPETS (آمن فقط مع شرح) -->
+  <section id="snippets" class="section">
+    <h3 class="section-title">أمثلة كود آمنة (مع شرح)</h3>
+    <div class="snippet">
+      <pre><code class="code-block">// مثال: منع XSS (جافاسكربت - عرض آمن)
+// لا تستخدم innerHTML مباشرة على مُدخلات المستخدم.
+// بدلًا من ذلك ضع النص عبر textContent أو عن طريق إنشاء عناصر.
+
+const userInput = '<script>alert("xss")</script>';
+const container = document.createElement('div');
+container.textContent = userInput; // تَحول أي وسوم لترميز نصي
+document.body.appendChild(container);</code></pre>
+      <div class="explain">
+        <strong>ما الذي يفعل هذا الكود؟</strong>
+        <p>يوضّح كيف نعرض نص مستخدم بأمان دون تنفيذ وسوم HTML أو سكربتات — نستخدم <code>textContent</code> بدل <code>innerHTML</code>.</p>
+      </div>
+    </div>
+
+    <div class="snippet">
+      <pre><code class="code-block">// مثال: استعلام مُعَلَّم (Prepared Statement) — وقائي ضد SQL Injection
+// هذا كود توضيحي (شبه-صِيغي) لقاعدة بيانات في back-end.
+
+const sql = "SELECT * FROM users WHERE email = ?";
+// ثم تمرير قيمة البريد كمعامل Prepared parameter
+db.query(sql, [email], (err, rows) => {
+  // المعاملات تُعامل بأمان من دون دمج النصوص داخل الاستعلام
+});</code></pre>
+      <div class="explain">
+        <strong>ما الذي يفعل هذا الكود؟</strong>
+        <p>يوضح مفهوم استخدام استعلامات مُعلّمة لعدم السماح بتعديل بنية الاستعلام عبر مدخلات المستخدم، وهو أسلوبٌ أساسيٌ للحماية من SQL Injection.</p>
+      </div>
+    </div>
+
+    <div class="snippet">
+      <pre><code class="code-block">// مثال: تشفير كلمات السر (مبدأ) - Node.js (مكتبة bcrypt)
+// هذا مثال آمن يوضح تخزين كلمة مرور مُشفَّرة في الخادم
+
+const bcrypt = require('bcrypt');
+const plain = 'user-password';
+const saltRounds = 12;
+bcrypt.hash(plain, saltRounds).then(hash => {
+  // خزّن hash في قاعدة البيانات بدلاً من النص الصريح
+});</code></pre>
+      <div class="explain">
+        <strong>ما الذي يفعل هذا الكود؟</strong>
+        <p>يوضح فكرة عمل التخزين الصحيح لكلمات السر — استخدام دوال تجزئة قوية (bcrypt) بدلاً من تخزين كلمة السر النصية.</p>
+      </div>
+    </div>
+
+    <div class="snippet">
+      <pre><code class="code-block">// مثال: التحقق من صحة المدخلات (Client-side) - بسيط وآمن
+function isEmail(value){
+  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);
+}</code></pre>
+      <div class="explain">
+        <strong>ما الذي يفعل هذا الكود؟</strong>
+        <p>يتحقق من صيغة البريد إلكتروني على جانب العميل. لكن التحقق الحقيقي والنهائي يجب أن يكون على الخادم أيضًا.</p>
+      </div>
+    </div>
+
+    <p class="warning"><strong>تحذير:</strong> الأمثلة أعلاه تعليمية وتُظهر ممارسات حماية؛ لا تُستخدم لاستهداف أنظمة غير مصرح بها.</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="section alt">
+    <h3 class="section-title">اختبار سريع</h3>
+    <div class="quiz-card">
+      <p>سؤال: أيُّ خيارٍ يساعد أكثر في منع هجمات XSS؟</p>
+      <div class="quiz-answers">
+        <button class="btn option" data-correct="false">استخدام innerHTML</button>
+        <button class="btn option" data-correct="true">استخدام textContent أو التصفية/الترميز</button>
+        <button class="btn option" data-correct="false">الاعتماد فقط على JavaScript من المستخدم</button>
+      </div>
+      <div id="quiz-result" class="quiz-result"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h3 class="section-title">تواصل</h3>
+    <p>إذا أردت تطوير مسار تعليمي مخصص أو إضافة محتوى تفاعلي تابعنا هنا:</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <strong>البريد</strong>
+        <p> 
+       .com</p>
+      </div>
+      <div class="contact-card">
+        <strong>واتساب</strong>
+        <p>+967 777 765 658</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© <span id="yr"></span> المشاغب اليمني — تعلم بمسؤولية. لا تجري تجارب على أنظمة بدون إذن.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
