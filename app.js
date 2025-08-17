@@ -1,4 +1,6 @@
 // واجهة تفاعلية بسيطة للصفحة: التفاعلات والـ quiz
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2184834453640420"
+     crossorigin="anonymous"></script>
 document.addEventListener('DOMContentLoaded', () => {
   // Quiz interaction
   const options = document.querySelectorAll('.quiz-answers .option');
